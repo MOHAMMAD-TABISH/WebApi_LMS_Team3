@@ -14,5 +14,6 @@ namespace WebApi_LMS_Team3.DataAccessLayer
 
         }
         public DbSet<EmployeeDb> Employee_T { get; set; }
+        public DbSet<ManagerDb> Manager_T { get; set; }
     }
 }
