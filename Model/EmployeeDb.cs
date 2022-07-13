@@ -11,12 +11,9 @@ namespace WebApi_LMS_Team3.Model
         [Key]
         public int Emp_Id { get; set; }
         public string Emp_Name { get; set; }
-        public DateTime Emp_DOB { get; set; }
-        public string Emp_City { get; set; }
         public string Emp_Email { get; set; }
         public long Emp_Mobile { get; set; }
         public string Emp_Dept { get; set; }
-        public string Emp_Gender { get; set; }
-        public long Emp_Salary { get; set; }
+        public long Available_Leave { get; set; }
     }
 }
