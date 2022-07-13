@@ -15,5 +15,8 @@ namespace WebApi_LMS_Team3.DataAccessLayer
         }
         public DbSet<EmployeeDb> Employee_T { get; set; }
         public DbSet<ManagerDb> Manager_T { get; set; }
+        public DbSet<ApplyLeaveDb> ApplyLeave_T { get; set; }
+        public DbSet<LoginDb> Login_T { get; set; }
+        public DbSet<EmpLeaveStatusDb> EmpLeaveStatus_T { get; set; }
     }
 }
