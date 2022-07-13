@@ -14,7 +14,6 @@ namespace WebApi_LMS_Team3.Model
         public string Mng_Name { get; set; }
         public string Mng_Email { get; set; }
         public long Mng_Mobile { get; set; }
-        public string Mng_City { get; set; }
-        public string Mng_Gender { get; set; }
+        
     }
 }
