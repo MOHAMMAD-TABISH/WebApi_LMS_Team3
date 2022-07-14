@@ -10,7 +10,7 @@ using WebApi_LMS_Team3.DataAccessLayer;
 namespace WebApi_LMS_Team3.Migrations
 {
     [DbContext(typeof(DataAccessLayer_LMS))]
-    [Migration("20220713114454_initEmp")]
+    [Migration("20220714202806_initEmp")]
     partial class initEmp
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,13 +23,16 @@ namespace WebApi_LMS_Team3.Migrations
 
             modelBuilder.Entity("WebApi_LMS_Team3.Model.ApplyLeaveDb", b =>
                 {
-                    b.Property<int>("Emp_Id")
+                    b.Property<int>("LeaveId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
                     b.Property<DateTime>("AppliedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Emp_Id")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
@@ -52,7 +55,7 @@ namespace WebApi_LMS_Team3.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Emp_Id");
+                    b.HasKey("LeaveId");
 
                     b.ToTable("ApplyLeave_T");
                 });
@@ -122,12 +125,14 @@ namespace WebApi_LMS_Team3.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("Emp_Password")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SecurityAnswer")
                         .HasColumnType("int");
 
                     b.Property<string>("SecurityQuestion")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Emp_Id");

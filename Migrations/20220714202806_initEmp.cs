@@ -11,8 +11,9 @@ namespace WebApi_LMS_Team3.Migrations
                 name: "ApplyLeave_T",
                 columns: table => new
                 {
-                    Emp_Id = table.Column<int>(type: "int", nullable: false)
+                    LeaveId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Emp_Id = table.Column<int>(type: "int", nullable: false),
                     NoOfDays = table.Column<int>(type: "int", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -24,7 +25,7 @@ namespace WebApi_LMS_Team3.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApplyLeave_T", x => x.Emp_Id);
+                    table.PrimaryKey("PK_ApplyLeave_T", x => x.LeaveId);
                 });
 
             migrationBuilder.CreateTable(
@@ -68,8 +69,8 @@ namespace WebApi_LMS_Team3.Migrations
                 {
                     Emp_Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Emp_Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityQuestion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Emp_Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SecurityQuestion = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SecurityAnswer = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
