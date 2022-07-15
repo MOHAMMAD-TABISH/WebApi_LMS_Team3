@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace WebApi_LMS_Team3.Model
 {
-    public class LoginDb
+    public class Login
     {
-        [Key]
-       
+        [Required]
         public int Emp_Id { get; set; }
-       
+        [Required]
+        [DataType(DataType.Password)]
         public string Emp_Password { get; set; }
-        
+        [Required]
         public string SecurityQuestion { get; set; }
-       
+        [Required]
         public int SecurityAnswer { get; set; }
     }
 }
