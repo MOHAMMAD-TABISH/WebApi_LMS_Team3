@@ -9,7 +9,6 @@ namespace WebApi_LMS_Team3.Model
     public class ManagerDb
     {
         [Key]
-        
         public int Mng_Id { get; set; }
         public string Mng_Name { get; set; }
         public string Mng_Email { get; set; }
