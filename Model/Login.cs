@@ -8,7 +8,7 @@ namespace WebApi_LMS_Team3.Model
 {
     public class Login
     {
-        [Required]
+        
         public int Emp_Id { get; set; }
         [Required]
         [DataType(DataType.Password)]

@@ -8,7 +8,7 @@ namespace WebApi_LMS_Team3.Model
 {
     public class EmpLeaveStatus
     {
-        [Required]
+       
         public int Leave_Id { get; set; }
         [Required]
         public int NoOfDays { get; set; }
