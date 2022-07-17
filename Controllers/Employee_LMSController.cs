@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApi_LMS_Team3.DataAccessLayer;
 using WebApi_LMS_Team3.Model;
+using WebApi_LMS_Team3.Repository;
 
 namespace WebApi_LMS_Team3.Controllers
 {
@@ -13,24 +14,34 @@ namespace WebApi_LMS_Team3.Controllers
     [ApiController]
     public class Employee_LMSController : ControllerBase
     {
-        DataAccessLayer_LMS _dataAccessLayer_LMS;
-        public Employee_LMSController(DataAccessLayer_LMS dataAccessLayer_LMS)
+        private readonly IEmployeeRepo employeeRepo;
+
+        public Employee_LMSController(IEmployeeRepo employeeRepo)
         {
-            _dataAccessLayer_LMS = dataAccessLayer_LMS;
+            this.employeeRepo = employeeRepo;
         }
         [HttpGet]
-        public ActionResult<List<EmployeeDb>> ShowAll()
+        [Route("MyDetails/{id}")]
+
+        public async Task<IActionResult> MyDetails_Id(int? id)
         {
-            var ar = _dataAccessLayer_LMS.Employee_T.ToList();
-            return ar;
+            var get_details = await employeeRepo.MyDetailsAsync(id);
+            return Ok(get_details);
         }
-        [HttpPost]
-        public ActionResult<List<EmployeeDb>> Insert(EmployeeDb EmpModel)
+        [HttpGet]
+        [Route("ShowAll")]
+
+        public async Task<IActionResult> ShowAll()
         {
-            var ar = _dataAccessLayer_LMS.Employee_T.Add(new EmployeeDb { Emp_Name = EmpModel.Emp_Name, Emp_Dept = EmpModel.Emp_Dept, Emp_Email = EmpModel.Emp_Email, Emp_Id = EmpModel.Emp_Id, Emp_Mobile = EmpModel.Emp_Mobile,Available_Leave = EmpModel.Available_Leave});
-            _dataAccessLayer_LMS.SaveChanges();
-            var res = _dataAccessLayer_LMS.Employee_T.ToList();
-            return res;
+            var get_allemp = await employeeRepo.ShowAllEMPAsync();
+            return Ok(get_allemp);
+        }
+        [HttpPut]
+        [Route("InsertEmpolyee")]
+        public async Task<int> InsertEmployee(Employee employeeModel)
+        {
+            var add = await employeeRepo.Insert_Employee_Async(employeeModel);
+            return 1;
         }
 
     }
