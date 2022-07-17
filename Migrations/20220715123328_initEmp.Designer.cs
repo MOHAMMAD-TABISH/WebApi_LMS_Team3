@@ -10,7 +10,7 @@ using WebApi_LMS_Team3.DataAccessLayer;
 namespace WebApi_LMS_Team3.Migrations
 {
     [DbContext(typeof(DataAccessLayer_LMS))]
-    [Migration("20220714202806_initEmp")]
+    [Migration("20220715123328_initEmp")]
     partial class initEmp
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,7 +31,7 @@ namespace WebApi_LMS_Team3.Migrations
                     b.Property<DateTime>("AppliedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Emp_Id")
+                    b.Property<int?>("Emp_Id")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("EndDate")
@@ -56,6 +56,8 @@ namespace WebApi_LMS_Team3.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("LeaveId");
+
+                    b.HasIndex("Emp_Id");
 
                     b.ToTable("ApplyLeave_T");
                 });
@@ -125,14 +127,12 @@ namespace WebApi_LMS_Team3.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("Emp_Password")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SecurityAnswer")
                         .HasColumnType("int");
 
                     b.Property<string>("SecurityQuestion")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Emp_Id");
@@ -159,6 +159,15 @@ namespace WebApi_LMS_Team3.Migrations
                     b.HasKey("Mng_Id");
 
                     b.ToTable("Manager_T");
+                });
+
+            modelBuilder.Entity("WebApi_LMS_Team3.Model.ApplyLeaveDb", b =>
+                {
+                    b.HasOne("WebApi_LMS_Team3.Model.EmployeeDb", "Id")
+                        .WithMany()
+                        .HasForeignKey("Emp_Id");
+
+                    b.Navigation("Id");
                 });
 #pragma warning restore 612, 618
         }

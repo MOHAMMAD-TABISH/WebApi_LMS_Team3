@@ -12,7 +12,7 @@ namespace WebApi_LMS_Team3.Model
         [Key]
         public int LeaveId { get; set; }
         [ForeignKey("Emp_Id")]
-        public int Emp_Id { get; set; }
+        public virtual EmployeeDb Id { get; set; }
         public int NoOfDays { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
