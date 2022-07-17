@@ -9,8 +9,11 @@ namespace WebApi_LMS_Team3.Helper
 {
     public class AutoMapper:Profile
     {
-        CreateMap<Employee, EmployeeDb>().ReverseMap();
-        CreateMap<ApplyLeave, ApplyLeaveDb>().ReverseMap();
-        CreateMap<Manager, ManagerDb>().ReverseMap();
+        public AutoMapper()
+        {
+            CreateMap<Employee, EmployeeDb>().ReverseMap();
+            CreateMap<ApplyLeave, ApplyLeaveDb>().ReverseMap();
+            CreateMap<Manager, ManagerDb>().ReverseMap();
+        }
     }
 }
