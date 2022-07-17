@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApi_LMS_Team3.DataAccessLayer;
+using WebApi_LMS_Team3.Repository;
 
 namespace WebApi_LMS_Team3
 {
@@ -27,8 +28,11 @@ namespace WebApi_LMS_Team3
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
+            services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<IEmployeeRepo, EmployeeRepo>();
+            services.AddScoped<IManagerRepo, ManagerRepo>();
+            services.AddScoped<IApplyLeaveRepo, ApplyLeaveRepo>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi_LMS_Team3", Version = "v1" });

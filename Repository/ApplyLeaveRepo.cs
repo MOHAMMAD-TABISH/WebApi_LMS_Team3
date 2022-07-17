@@ -54,15 +54,12 @@ namespace WebApi_LMS_Team3.Repository
 */
         public List<ApplyLeave> ShowAllLeaves(int? id)
         {
-            var all_leaves = dataAccessLayer_LMS.ApplyLeave_T.Where(x => x.LeaveId == id);
+            var all_leaves = dataAccessLayer_LMS.ApplyLeave_T.Where(x =>x.LeaveId == id);
             var leaves = mapper.Map<List<ApplyLeave>>(all_leaves);
             return leaves;
 
         }
 
-        List<ApplyLeave> IApplyLeaveRepo.ShowAllLeaves(int? id)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

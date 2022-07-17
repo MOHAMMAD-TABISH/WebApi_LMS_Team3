@@ -9,8 +9,9 @@ using WebApi_LMS_Team3.Model;
 
 namespace WebApi_LMS_Team3.Repository
 {
-    public class EmployeeRepo
+    public class EmployeeRepo:IEmployeeRepo
     {
+
         private readonly DataAccessLayer_LMS dataAccessLayer_LMS;
         private readonly IMapper mapper;
 

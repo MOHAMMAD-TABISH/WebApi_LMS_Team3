@@ -8,24 +8,6 @@ namespace WebApi_LMS_Team3.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "EmpLeaveStatus_T",
-                columns: table => new
-                {
-                    Leave_Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NoOfDays = table.Column<int>(type: "int", nullable: false),
-                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LeaveType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LeaveStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LeaveReason = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EmpLeaveStatus_T", x => x.Leave_Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Employee_T",
                 columns: table => new
                 {
@@ -35,26 +17,12 @@ namespace WebApi_LMS_Team3.Migrations
                     Emp_Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Emp_Mobile = table.Column<long>(type: "bigint", nullable: false),
                     Emp_Dept = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Available_Leave = table.Column<long>(type: "bigint", nullable: false)
+                    Available_Leave = table.Column<long>(type: "bigint", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Employee_T", x => x.Emp_Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Login_T",
-                columns: table => new
-                {
-                    Emp_Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Emp_Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityQuestion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecurityAnswer = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Login_T", x => x.Emp_Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -63,6 +31,7 @@ namespace WebApi_LMS_Team3.Migrations
                 {
                     Mng_Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    EmployeeId = table.Column<int>(type: "int", nullable: false),
                     Mng_Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Mng_Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Mng_Mobile = table.Column<long>(type: "bigint", nullable: false)
@@ -109,12 +78,6 @@ namespace WebApi_LMS_Team3.Migrations
         {
             migrationBuilder.DropTable(
                 name: "ApplyLeave_T");
-
-            migrationBuilder.DropTable(
-                name: "EmpLeaveStatus_T");
-
-            migrationBuilder.DropTable(
-                name: "Login_T");
 
             migrationBuilder.DropTable(
                 name: "Manager_T");

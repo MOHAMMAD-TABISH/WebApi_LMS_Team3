@@ -14,7 +14,6 @@ namespace WebApi_LMS_Team3.Controllers
     public class ApplyLeaveController : ControllerBase
     {
         private readonly IApplyLeaveRepo applyLeaveRepo;
-
         public ApplyLeaveController(IApplyLeaveRepo applyLeaveRepo)
         {
             this.applyLeaveRepo = applyLeaveRepo;

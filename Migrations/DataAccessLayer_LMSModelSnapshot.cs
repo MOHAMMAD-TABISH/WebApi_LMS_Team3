@@ -60,36 +60,6 @@ namespace WebApi_LMS_Team3.Migrations
                     b.ToTable("ApplyLeave_T");
                 });
 
-            modelBuilder.Entity("WebApi_LMS_Team3.Model.EmpLeaveStatusDb", b =>
-                {
-                    b.Property<int>("Leave_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("LeaveReason")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LeaveStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LeaveType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("NoOfDays")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Leave_Id");
-
-                    b.ToTable("EmpLeaveStatus_T");
-                });
-
             modelBuilder.Entity("WebApi_LMS_Team3.Model.EmployeeDb", b =>
                 {
                     b.Property<int>("Emp_Id")
@@ -112,30 +82,12 @@ namespace WebApi_LMS_Team3.Migrations
                     b.Property<string>("Emp_Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Emp_Id");
 
                     b.ToTable("Employee_T");
-                });
-
-            modelBuilder.Entity("WebApi_LMS_Team3.Model.LoginDb", b =>
-                {
-                    b.Property<int>("Emp_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("Emp_Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SecurityAnswer")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SecurityQuestion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Emp_Id");
-
-                    b.ToTable("Login_T");
                 });
 
             modelBuilder.Entity("WebApi_LMS_Team3.Model.ManagerDb", b =>
@@ -144,6 +96,9 @@ namespace WebApi_LMS_Team3.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Mng_Email")
                         .HasColumnType("nvarchar(max)");

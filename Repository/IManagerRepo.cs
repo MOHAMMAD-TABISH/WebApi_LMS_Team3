@@ -6,7 +6,7 @@ using WebApi_LMS_Team3.Model;
 
 namespace WebApi_LMS_Team3.Repository
 {
-    interface IManagerRepo
+    public interface IManagerRepo
     {
         Task<Manager> getManagerAsync(int? id);
 

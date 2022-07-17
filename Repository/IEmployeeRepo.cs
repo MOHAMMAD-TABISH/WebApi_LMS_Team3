@@ -6,7 +6,7 @@ using WebApi_LMS_Team3.Model;
 
 namespace WebApi_LMS_Team3.Repository
 {
-    interface IEmployeeRepo
+    public interface IEmployeeRepo
     {
         Task<Employee> MyDetailsAsync(int? id);
         Task<List<Employee>> ShowAllEMPAsync();
