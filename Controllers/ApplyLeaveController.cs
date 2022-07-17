@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApi_LMS_Team3.Model;
+using WebApi_LMS_Team3.Repository;
 
 namespace WebApi_LMS_Team3.Controllers
 {
