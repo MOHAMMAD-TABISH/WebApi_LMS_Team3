@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApi_LMS_Team3.DataAccessLayer;
 using WebApi_LMS_Team3.Model;
+using WebApi_LMS_Team3.Repository;
 
 namespace WebApi_LMS_Team3.Controllers
 {
@@ -13,24 +14,22 @@ namespace WebApi_LMS_Team3.Controllers
     [ApiController]
     public class ManagerController : ControllerBase
     {
-        DataAccessLayer_LMS _dataAccessLayer_LMS;
-        public ManagerController(DataAccessLayer_LMS dataAccessLayer_LMS)
-        {
-            _dataAccessLayer_LMS = dataAccessLayer_LMS;
-        }
-        [HttpGet]
-        public ActionResult<List<ManagerDb>> ShowAll()
-        {
-            var ab = _dataAccessLayer_LMS.Manager_T.ToList();
-            return ab;
-        }
-        [HttpPost]
-        public ActionResult<List<ManagerDb>> Insert(ManagerDb MngModel)
-        {
-            var ar = _dataAccessLayer_LMS.Manager_T.Add(new ManagerDb {Mng_Id=MngModel.Mng_Id, Mng_Email=MngModel.Mng_Email,Mng_Mobile=MngModel.Mng_Mobile,Mng_Name=MngModel.Mng_Name });
-            _dataAccessLayer_LMS.SaveChanges();
-            var res = _dataAccessLayer_LMS.Manager_T.ToList();
-            return res;
+
+       
+            private readonly IManagerRepo managerRepo;
+
+            public ManagerController(IManagerRepo managerRepo)
+            {
+                this.managerRepo = managerRepo;
+            }
+
+            [HttpGet]
+            [Route("MyMangerDetails/{id}")]
+
+            public async Task<IActionResult> getMangaerDetails(int? id)
+            {
+                var get_details_manager = await managerRepo.getManagerAsync(id);
+                return Ok(get_details_manager);
+            }
         }
     }
-}
