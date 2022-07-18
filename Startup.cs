@@ -40,6 +40,8 @@ namespace WebApi_LMS_Team3
 
             });
             services.AddDbContextPool<DataAccessLayer_LMS>(option => option.UseSqlServer(Configuration.GetConnectionString("MYConnection")));
+            services.AddCors(option => option.AddDefaultPolicy
+            (b => b.WithOrigins("*").AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +55,7 @@ namespace WebApi_LMS_Team3
             }
 
             app.UseRouting();
+            app.UseCors();
 
             app.UseAuthorization();
 

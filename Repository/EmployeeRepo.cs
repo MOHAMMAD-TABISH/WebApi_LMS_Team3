@@ -36,6 +36,13 @@ namespace WebApi_LMS_Team3.Repository
 
             return 1;
         }
+        public async Task<int> Login_Async(string email, string password)
+        {
+            var data = await dataAccessLayer_LMS.Employee_T.FirstOrDefaultAsync(x => x.Emp_Email == email & x.Password == password);
+            var map = mapper.Map<Employee>(data);
+
+            return 1;
+        }
 
         public async Task<Employee> MyDetailsAsync(int? id)
         {
@@ -51,5 +58,17 @@ namespace WebApi_LMS_Team3.Repository
             var map_list = mapper.Map<List<Employee>>(list_emp);
             return map_list;
         }
+        public async Task<int> DeleteEmp_Async(int? id)
+        {
+            var data = await dataAccessLayer_LMS.Employee_T.FirstAsync(x => x.Emp_Id == id);
+            if (data != null)
+            {
+                dataAccessLayer_LMS.Employee_T.Remove(data);
+                await dataAccessLayer_LMS.SaveChangesAsync();
+            }
+
+            return 1;
+        }
+
     }
 }

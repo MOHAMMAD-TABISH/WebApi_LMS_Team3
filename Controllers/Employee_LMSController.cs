@@ -36,11 +36,25 @@ namespace WebApi_LMS_Team3.Controllers
             var get_allemp = await employeeRepo.ShowAllEMPAsync();
             return Ok(get_allemp);
         }
-        [HttpPut]
+        [HttpPost]
         [Route("InsertEmpolyee")]
         public async Task<int> InsertEmployee(Employee employeeModel)
         {
             var add = await employeeRepo.Insert_Employee_Async(employeeModel);
+            return 1;
+        }
+        [HttpPut]
+        [Route("Login/{email}/{password}")] 
+        public async Task<int> Login(string email, string password)
+        {
+            var add = await employeeRepo.Login_Async(email, password);
+            return 1;
+        }
+        [HttpDelete]
+        [Route("Delete/{id}")]
+        public async Task<int> Delete(int? id)
+        {
+            var get_details = await employeeRepo.DeleteEmp_Async(id);
             return 1;
         }
 
