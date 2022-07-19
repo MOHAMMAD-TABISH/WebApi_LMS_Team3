@@ -31,5 +31,13 @@ namespace WebApi_LMS_Team3.Controllers
                 var get_details_manager = await managerRepo.getManagerAsync(id);
                 return Ok(get_details_manager);
             }
+        [HttpGet]
+        [Route("ShowAll")]
+
+        public async Task<IActionResult> ShowAll()
+        {
+            var get_allmng = await managerRepo.ShowAllMNGAsync();
+            return Ok(get_allmng);
+        }
         }
     }

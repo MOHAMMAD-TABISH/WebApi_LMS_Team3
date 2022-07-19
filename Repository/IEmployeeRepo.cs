@@ -10,7 +10,7 @@ namespace WebApi_LMS_Team3.Repository
     {
         Task<Employee> MyDetailsAsync(int? id);
         Task<List<Employee>> ShowAllEMPAsync();
-        Task<int> Insert_Employee_Async(Employee employee);
+        Task<int> Insert_Employee_Async(EmployeeDb employee);
         Task<int> Login_Async(string email, string password);
         Task<int> DeleteEmp_Async(int? id);
     }

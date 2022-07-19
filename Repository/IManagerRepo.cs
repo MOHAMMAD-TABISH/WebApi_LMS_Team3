@@ -9,6 +9,6 @@ namespace WebApi_LMS_Team3.Repository
     public interface IManagerRepo
     {
         Task<Manager> getManagerAsync(int? id);
-
+        Task <List<Manager>> ShowAllMNGAsync();
     }
 }

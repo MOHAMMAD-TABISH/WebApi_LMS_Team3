@@ -29,5 +29,11 @@ namespace WebApi_LMS_Team3.Repository
             return details_View;
 
         }
+        public async Task<List<Manager>> ShowAllMNGAsync()
+        {
+            var list_mng = await dataAccessLayer_LMS.Manager_T.ToListAsync();
+            var map_list = mapper.Map<List<Manager>>(list_mng);
+            return map_list;
+        }
     }
 }

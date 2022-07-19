@@ -38,16 +38,20 @@ namespace WebApi_LMS_Team3.Controllers
         }
         [HttpPost]
         [Route("InsertEmpolyee")]
-        public async Task<int> InsertEmployee(Employee employeeModel)
+        public async Task<int> InsertEmployee(EmployeeDb employeeModel)
         {
             var add = await employeeRepo.Insert_Employee_Async(employeeModel);
             return 1;
         }
-        [HttpPut]
-        [Route("Login/{email}/{password}")] 
+        [HttpGet]
+        [Route("Login")]
         public async Task<int> Login(string email, string password)
         {
             var add = await employeeRepo.Login_Async(email, password);
+            if (add == 0)
+            {
+                return 0;
+            }
             return 1;
         }
         [HttpDelete]

@@ -23,7 +23,7 @@ namespace WebApi_LMS_Team3.Repository
 
 
 
-        public async Task<int> Insert_Employee_Async(Employee employee)
+        public async Task<int> Insert_Employee_Async(EmployeeDb employee)
         {
             var add = mapper.Map<EmployeeDb>(employee);
 
@@ -39,11 +39,16 @@ namespace WebApi_LMS_Team3.Repository
         public async Task<int> Login_Async(string email, string password)
         {
             var data = await dataAccessLayer_LMS.Employee_T.FirstOrDefaultAsync(x => x.Emp_Email == email & x.Password == password);
-            var map = mapper.Map<Employee>(data);
+            if (data != null)
+            {
 
-            return 1;
+                var map = mapper.Map<Employee>(data);
+                return 1;
+            }
+
+            return 0;
+
         }
-
         public async Task<Employee> MyDetailsAsync(int? id)
         {
             var details = await dataAccessLayer_LMS.Employee_T.FirstOrDefaultAsync(x => x.Emp_Id == id);
