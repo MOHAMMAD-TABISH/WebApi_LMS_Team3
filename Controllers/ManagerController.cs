@@ -39,5 +39,13 @@ namespace WebApi_LMS_Team3.Controllers
             var get_allmng = await managerRepo.ShowAllMNGAsync();
             return Ok(get_allmng);
         }
+
+        [HttpPost]
+        [Route("InsertManager")]
+        public async Task<int> InsertManager(ManagerDb managerModel)
+        {
+            var add = await managerRepo.Insert_Manager_Async(managerModel);
+            return 1;
         }
     }
+}

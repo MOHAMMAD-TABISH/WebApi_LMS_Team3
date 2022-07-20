@@ -35,5 +35,20 @@ namespace WebApi_LMS_Team3.Repository
             var map_list = mapper.Map<List<Manager>>(list_mng);
             return map_list;
         }
+
+        public async Task<int> Insert_Manager_Async(ManagerDb manager)
+        {
+            var add = mapper.Map<ManagerDb>(manager);
+
+            if (add != null)
+            {
+                await dataAccessLayer_LMS.Manager_T.AddAsync(add);
+                await dataAccessLayer_LMS.SaveChangesAsync();
+
+            }
+
+            return 1;
+        }
     }
-}
+    }
+

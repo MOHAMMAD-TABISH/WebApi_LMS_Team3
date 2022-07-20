@@ -10,5 +10,7 @@ namespace WebApi_LMS_Team3.Repository
     {
         Task<Manager> getManagerAsync(int? id);
         Task <List<Manager>> ShowAllMNGAsync();
+        Task<int> Insert_Manager_Async(ManagerDb manager);
+
     }
 }
