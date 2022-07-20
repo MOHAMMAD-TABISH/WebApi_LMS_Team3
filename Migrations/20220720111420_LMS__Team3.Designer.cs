@@ -10,8 +10,8 @@ using WebApi_LMS_Team3.DataAccessLayer;
 namespace WebApi_LMS_Team3.Migrations
 {
     [DbContext(typeof(DataAccessLayer_LMS))]
-    [Migration("20220719040935_initEmp")]
-    partial class initEmp
+    [Migration("20220720111420_LMS__Team3")]
+    partial class LMS__Team3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

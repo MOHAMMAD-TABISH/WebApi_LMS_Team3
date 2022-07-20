@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApi_LMS_Team3.Migrations
 {
-    public partial class initEmp : Migration
+    public partial class LMS__Team3 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

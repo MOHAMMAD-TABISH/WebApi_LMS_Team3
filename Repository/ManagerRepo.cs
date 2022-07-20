@@ -29,6 +29,15 @@ namespace WebApi_LMS_Team3.Repository
             return details_View;
 
         }
+
+        public async Task<ManagerDb> getManagerdetailAsync(int? id)
+        {
+            var details = await dataAccessLayer_LMS.Manager_T.FirstOrDefaultAsync(x => x.EmployeeId == id);
+            var details_View = mapper.Map<ManagerDb>(details);
+
+            return details_View;
+
+        }
         public async Task<List<Manager>> ShowAllMNGAsync()
         {
             var list_mng = await dataAccessLayer_LMS.Manager_T.ToListAsync();
